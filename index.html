@@ -7,8 +7,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            background: #1a1a1a;
+            color: #e0e0e0;
             line-height: 1.6;
         }
         
@@ -20,36 +20,37 @@
         }
         
         header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header p { font-size: 1.2em; opacity: 0.9; }
+        header p { font-size: 1.2em; opacity: 0.95; }
         
         .container { max-width: 1200px; margin: 50px auto; padding: 20px; }
         
         .project-card {
-            background: white;
+            background: #242424;
             padding: 0;
             margin: 30px 0;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
             display: flex;
             flex-direction: row;
             gap: 0;
+            border: 1px solid #333;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(44, 95, 141, 0.4);
+            border-color: #2c5f8d;
         }
         
-        /* Thumbnail on left side */
         .project-thumbnail {
             width: 400px;
             min-width: 400px;
             height: 280px;
             overflow: hidden;
             position: relative;
-            background: #e8eef3;
+            background: #1a1a1a;
         }
         
         .project-thumbnail img {
@@ -57,13 +58,14 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
+            opacity: 0.95;
         }
         
         .project-card:hover .project-thumbnail img {
             transform: scale(1.05);
+            opacity: 1;
         }
         
-        /* Content on right side */
         .project-content {
             padding: 30px;
             flex: 1;
@@ -72,7 +74,7 @@
         }
         
         .project-content h2 {
-            color: #2c5f8d;
+            color: #8b9bea;
             margin-bottom: 15px;
             font-size: 1.8em;
         }
@@ -85,18 +87,20 @@
         }
         
         .skill-badge {
-            background: #e3f2ff;
-            color: #2c5f8d;
+            background: #2d2d4a;
+            color: #8b9bea;
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.85em;
             font-weight: 600;
+            border: 1px solid #3d3d5a;
         }
         
         .project-content p {
             margin: 10px 0;
-            color: #555;
+            color: #c4c4c4;
             flex: 1;
+            line-height: 1.7;
         }
         
         .btn {
@@ -107,16 +111,17 @@
             text-decoration: none;
             border-radius: 6px;
             margin-top: 15px;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
             font-weight: 600;
             align-self: flex-start;
         }
         
         .btn:hover {
             background: #1e4266;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 95, 141, 0.5);
         }
         
-        /* Responsive for smaller screens */
         @media (max-width: 768px) {
             .project-card {
                 flex-direction: column;
@@ -129,19 +134,21 @@
         }
         
         footer {
-            background: #333;
-            color: white;
+            background: #0d0d0d;
+            color: #888;
             text-align: center;
             padding: 30px 20px;
             margin-top: 60px;
+            border-top: 1px solid #333;
         }
         
         footer a {
-            color: #4a8ec2;
+            color: #8b9bea;
             text-decoration: none;
         }
         
         footer a:hover {
+            color: #a0aef0;
             text-decoration: underline;
         }
     </style>
@@ -149,7 +156,7 @@
 <body>
     <header>
         <h1>Himansh Rajak</h1>
-        <p>Data Analyst | Power BI | SQL | Python</p>
+        <p>Healthcare Data Analyst | Power BI | SQL | Python</p>
         <p style="font-size: 1em; margin-top: 10px;">
             <a href="mailto:himanshr1107@gmail.com" style="color: white; text-decoration: none;">himanshr1107@gmail.com</a> | 
             <a href="https://linkedin.com/in/himansh-rajak" style="color: white; text-decoration: none;">LinkedIn</a> | 
@@ -158,14 +165,14 @@
     </header>
     
     <div class="container">
-        <!-- PROJECT 1: Healthcare Dashboard -->
         <div class="project-card">
             <div class="project-thumbnail">
                 <img src="https://himansh-11.github.io/healthcare-analytics-portfolio/page1-overview.png" alt="Hospital Readmission Dashboard">
             </div>
             <div class="project-content">
                 <h2>🏥 Hospital Readmission Analytics Dashboard</h2>
-                <div class="project-meta">
+                 <div class="project-meta">
+
                     <span class="skill-badge">Power BI</span>
                     <span class="skill-badge">Power Query</span>
                     <span class="skill-badge">DAX</span>
@@ -182,13 +189,14 @@
                 </div>
                 <p>Analyzed 2,497 hospitals using CMS data to identify $207.42 million in potential Medicare savings through readmission optimization. Built interactive 3-page dashboard with geographic analysis, hospital-level comparisons, and financial impact recommendations.</p>
                 <a href="https://himansh-11.github.io/healthcare-analytics-portfolio" class="btn">View Project →</a>
+
             </div>
+
         </div>
 
-        <!-- PROJECT 2: SQL Database -->
         <div class="project-card">
             <div class="project-thumbnail">
-                <img src="https://himansh-11.github.io/hospital-database-sql/sql-preview.png" alt="Hospital Database Schema">
+                <img src="https://himansh-11.github.io/hospital-database-sql/er-diagram.png" alt="Hospital Database Schema">
             </div>
             <div class="project-content">
                 <h2>🗄️ Hospital Database Design</h2>
@@ -203,13 +211,10 @@
                 <a href="https://himansh-11.github.io/hospital-database-sql" class="btn">View Project →</a>
             </div>
         </div>
-
-        <!-- ADD MORE PROJECTS HERE WITH SAME STRUCTURE -->
-        
     </div>
     
     <footer>
-        <p>&copy; 2025 Himansh Rajak | Data Analytics Portfolio</p>
+        <p>&copy; 2024 Himansh Rajak | Data Analytics Portfolio</p>
         <p>
             <a href="mailto:himanshr1107@gmail.com">Email</a> | 
             <a href="https://linkedin.com/in/himansh-rajak">LinkedIn</a> | 
@@ -218,4 +223,3 @@
     </footer>
 </body>
 </html>
-```
