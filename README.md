@@ -26,9 +26,9 @@ Healthcare Data Analyst with expertise in Power BI, SQL, and healthcare analytic
 Comprehensive analysis of hospital readmission patterns across 2,497 U.S. hospitals using CMS data.
 
 **Key Achievements:**
-- Identified $4.2 billion in potential Medicare savings
-- Analyzed 116% performance variation across hospitals
-- Built 3-page interactive dashboard with geographic and financial analysis
+- Identified $207.42 million in potential Medicare savings
+- Analyzed 242% performance variation across hospitals
+- Built a 3-page interactive dashboard with geographic and financial analysis
 
 [View Project →](https://himansh-11.github.io/healthcare-analytics-portfolio)
 
