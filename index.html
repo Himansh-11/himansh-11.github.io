@@ -22,46 +22,110 @@
         header h1 { font-size: 2.5em; margin-bottom: 10px; }
         header p { font-size: 1.2em; opacity: 0.9; }
         
-        .container { max-width: 1000px; margin: 50px auto; padding: 20px; }
+        .container { max-width: 1200px; margin: 50px auto; padding: 20px; }
         
         .project-card {
             background: white;
-            padding: 30px;
-            margin: 20px 0;
+            padding: 0;
+            margin: 30px 0;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            gap: 0;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         
-        .project-card h2 {
+        /* Thumbnail on left side */
+        .project-thumbnail {
+            width: 400px;
+            min-width: 400px;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            background: #e8eef3;
+        }
+        
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        /* Content on right side */
+        .project-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-content h2 {
             color: #2c5f8d;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
             margin-bottom: 15px;
         }
         
-        .project-card p {
+        .skill-badge {
+            background: #e3f2ff;
+            color: #2c5f8d;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .project-content p {
             margin: 10px 0;
             color: #555;
+            flex: 1;
         }
         
         .btn {
             display: inline-block;
             background: #2c5f8d;
             color: white;
-            padding: 12px 24px;
+            padding: 12px 28px;
             text-decoration: none;
             border-radius: 6px;
             margin-top: 15px;
             transition: background 0.3s ease;
             font-weight: 600;
+            align-self: flex-start;
         }
         
         .btn:hover {
             background: #1e4266;
+        }
+        
+        /* Responsive for smaller screens */
+        @media (max-width: 768px) {
+            .project-card {
+                flex-direction: column;
+            }
+            
+            .project-thumbnail {
+                width: 100%;
+                height: 220px;
+            }
         }
         
         footer {
@@ -94,23 +158,48 @@
     </header>
     
     <div class="container">
+        <!-- PROJECT 1: Healthcare Dashboard -->
         <div class="project-card">
-            <h2>🏥 Hospital Readmission Analytics Dashboard</h2>
-            <p><strong>Skills:</strong> Power BI, DAX, Healthcare Analytics, Data Modeling</p>
-            <p>Analyzed 2,497 hospitals using CMS data to identify $207.42M in potential Medicare savings through readmission optimization. Built interactive 3-page dashboard with geographic analysis, hospital-level comparisons, and financial impact recommendations.</p>
-            <a href="https://himansh-11.github.io/healthcare-analytics-portfolio" class="btn">View Project →</a>
+            <div class="project-thumbnail">
+                <img src="https://himansh-11.github.io/healthcare-analytics-portfolio/page1-overview.png" alt="Hospital Readmission Dashboard">
+            </div>
+            <div class="project-content">
+                <h2>🏥 Hospital Readmission Analytics Dashboard</h2>
+                <div class="project-meta">
+                    <span class="skill-badge">Power BI</span>
+                    <span class="skill-badge">DAX</span>
+                    <span class="skill-badge">Healthcare Analytics</span>
+                    <span class="skill-badge">Data Modeling</span>
+                </div>
+                <p>Analyzed 2,497 hospitals using CMS data to identify $4.2B in potential Medicare savings through readmission optimization. Built interactive 3-page dashboard with geographic analysis, hospital-level comparisons, and financial impact recommendations.</p>
+                <a href="https://himansh-11.github.io/healthcare-analytics-portfolio" class="btn">View Project →</a>
+            </div>
         </div>
 
+        <!-- PROJECT 2: SQL Database -->
         <div class="project-card">
-            <h2>🗄️ Hospital Database Design</h2>
-            <p><strong>Skills:</strong> MySQL, Database Design, SQL, Healthcare Data Modeling</p>
-            <p>Designed and implemented a normalized relational database for hospital management supporting 8+ interconnected entities. Includes patient records, appointment scheduling, treatment tracking, and billing systems with enforced referential integrity.</p>
-            <a href="https://himansh-11.github.io/hospital-database-sql" class="btn">View Project →</a>
+            <div class="project-thumbnail">
+                <img src="https://himansh-11.github.io/hospital-database-sql/er-diagram.png" alt="Hospital Database Schema">
+            </div>
+            <div class="project-content">
+                <h2>🗄️ Hospital Database Design</h2>
+                <div class="project-meta">
+                    <span class="skill-badge">MySQL</span>
+                    <span class="skill-badge">SQL</span>
+                    <span class="skill-badge">Database Design</span>
+                    <span class="skill-badge">Healthcare Data</span>
+                </div>
+                <p>Designed and implemented a normalized relational database for hospital management supporting 8+ interconnected entities. Includes patient records, appointment scheduling, treatment tracking, and billing systems with enforced referential integrity.</p>
+                <a href="https://himansh-11.github.io/hospital-database-sql" class="btn">View Project →</a>
+            </div>
         </div>
+
+        <!-- ADD MORE PROJECTS HERE WITH SAME STRUCTURE -->
+        
     </div>
     
     <footer>
-        <p>&copy; 2025 Himansh Rajak | Data Analytics Portfolio</p>
+        <p>&copy; 2024 Himansh Rajak | Data Analytics Portfolio</p>
         <p>
             <a href="mailto:himanshr1107@gmail.com">Email</a> | 
             <a href="https://linkedin.com/in/himansh-rajak">LinkedIn</a> | 
@@ -119,3 +208,4 @@
     </footer>
 </body>
 </html>
+```
