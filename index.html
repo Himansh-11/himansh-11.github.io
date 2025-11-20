@@ -1,206 +1,996 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Himansh Rajak - Data Analytics Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himansh | Healthcare Data Analytics Portfolio</title>
+    <meta name="description" content="Data Specialist with 5+ years experience in healthcare analytics, SQL database design, and business intelligence. Actively seeking Healthcare Data Analyst and Research roles.">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: #1a1a1a;
-            color: #e0e0e0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark Theme Colors */
+            --primary-color: #60A5FA;      /* Bright Blue */
+            --primary-dark: #3B82F6;       /* Rich Blue */
+            --secondary-color: #A78BFA;    /* Purple */
+            --accent-color: #FBBF24;       /* Amber */
+            --success-color: #34D399;      /* Emerald */
+            
+            /* Background Colors */
+            --bg-dark: #0F172A;            /* Deep Navy */
+            --bg-darker: #020617;          /* Almost Black */
+            --bg-card: #1E293B;            /* Dark Slate */
+            --bg-card-hover: #334155;      /* Lighter Slate */
+            
+            /* Text Colors */
+            --text-primary: #F1F5F9;       /* Light Gray */
+            --text-secondary: #CBD5E1;     /* Medium Gray */
+            --text-muted: #94A3B8;         /* Muted Gray */
+            
+            /* Borders & Dividers */
+            --border-color: #334155;
+            --border-light: #475569;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+            --gradient-card: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2.5rem;
+            background: white;
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-dark);
+            border-color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Headers */
+        section {
+            margin: 5rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25);
+            border-color: var(--primary-color);
+        }
+
+        .project-header {
+            background: var(--gradient-primary);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .project-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .project-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body > p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number-sm {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label-sm {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        .project-highlights {
+            margin: 1.5rem 0;
+        }
+
+        .project-highlights strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .project-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-highlights li {
+            padding: 0.6rem 0 0.6rem 2rem;
+            position: relative;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
-        
-        header {
-            background: linear-gradient(135deg, #2c5f8d 0%, #1e4266 100%);
-            color: white;
-            padding: 60px 20px;
+
+        .project-highlights li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .project-link {
+            flex: 1;
             text-align: center;
-        }
-        
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header p { font-size: 1.2em; opacity: 0.95; }
-        
-        .container { max-width: 1200px; margin: 50px auto; padding: 20px; }
-        
-        .project-card {
-            background: #242424;
-            padding: 0;
-            margin: 30px 0;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            display: flex;
-            flex-direction: row;
-            gap: 0;
-            border: 1px solid #333;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(44, 95, 141, 0.4);
-            border-color: #2c5f8d;
-        }
-        
-        .project-thumbnail {
-            width: 400px;
-            min-width: 400px;
-            height: 280px;
-            overflow: hidden;
-            position: relative;
-            background: #1a1a1a;
-        }
-        
-        .project-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            opacity: 0.95;
-        }
-        
-        .project-card:hover .project-thumbnail img {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-        
-        .project-content {
-            padding: 30px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-content h2 {
-            color: #8b9bea;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-        
-        .project-meta {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-        
-        .skill-badge {
-            background: #2d2d4a;
-            color: #8b9bea;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: 600;
-            border: 1px solid #3d3d5a;
-        }
-        
-        .project-content p {
-            margin: 10px 0;
-            color: #c4c4c4;
-            flex: 1;
-            line-height: 1.7;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #2c5f8d;
+            padding: 0.9rem;
+            background: var(--gradient-primary);
             color: white;
-            padding: 12px 28px;
             text-decoration: none;
-            border-radius: 6px;
-            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: 700;
             transition: all 0.3s ease;
-            font-weight: 600;
-            align-self: flex-start;
+            border: none;
         }
-        
-        .btn:hover {
-            background: #1e4266;
+
+        .project-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(44, 95, 141, 0.5);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
         }
-        
-        @media (max-width: 768px) {
-            .project-card {
-                flex-direction: column;
-            }
-            
-            .project-thumbnail {
-                width: 100%;
-                height: 220px;
-            }
+
+        .project-link.secondary {
+            background: var(--bg-dark);
+            border: 2px solid var(--border-light);
         }
-        
-        footer {
-            background: #0d0d0d;
-            color: #888;
+
+        .project-link.secondary:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-card-hover);
+        }
+
+        .project-link.disabled {
+            background: var(--bg-dark);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            border: 2px solid var(--border-color);
+        }
+
+        .project-link.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* NEW badge */
+        .new-badge {
+            display: inline-block;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-weight: 500;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-category li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 12px;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #333;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
-        
-        footer a {
-            color: #8b9bea;
+
+        .contact-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .contact-card a {
+            color: var(--text-secondary);
             text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
         }
-        
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .contact-card .muted {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Background Section */
+        .background-card {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .background-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .background-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0.5rem 0;
+        }
+
+        .background-card strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 0.8rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
         footer a:hover {
-            color: #a0aef0;
-            text-decoration: underline;
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 1000;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Himansh Rajak</h1>
-        <p>Data Analyst | Power BI | SQL | Python</p>
-        <p style="font-size: 1em; margin-top: 10px;">
-            <a href="mailto:himanshr1107@gmail.com" style="color: white; text-decoration: none;">himanshr1107@gmail.com</a> | 
-            <a href="https://linkedin.com/in/himansh-rajak" style="color: white; text-decoration: none;">LinkedIn</a> | 
-            <a href="https://github.com/Himansh-11" style="color: white; text-decoration: none;">GitHub</a>
-        </p>
-    </header>
-    
-    <div class="container">
-        <div class="project-card">
-            <div class="project-thumbnail">
-                <img src="https://himansh-11.github.io/healthcare-analytics-portfolio/page1-overview.png" alt="Hospital Readmission Dashboard">
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Himansh</h1>
+            <p class="subtitle">Data Specialist | Healthcare Analytics | SQL & Business Intelligence</p>
+            <p class="tagline">5+ years experience • B.S. Data Science • Cap-exempt friendly</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/himansh-11" class="btn" target="_blank">
+                    <span>📊</span> GitHub
+                </a>
+                <a href="https://linkedin.com/in/himansh11" class="btn" target="_blank">
+                    <span>💼</span> LinkedIn
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span>📧</span> Contact
+                </a>
             </div>
-            <div class="project-content">
-                <h2>🏥 Hospital Readmission Analytics Dashboard</h2>
-                 <div class="project-meta">
-
-                    <span class="skill-badge">Power BI</span>
-                    <span class="skill-badge">Power Query</span>
-                    <span class="skill-badge">DAX</span>
-                    <span class="skill-badge">Healthcare Analytics</span>
-                    <span class="skill-badge">Data Modeling</span>
-                    <span class="skill-badge">Data Visualization</span>
-                    <span class="skill-badge">Healthcare Analytics</span>
-                    <span class="skill-badge">Healthcare KPIs</span>
-                    <span class="skill-badge">KPI Development</span>
-                    <span class="skill-badge">Financial Analytics</span>
-                    <span class="skill-badge">Financial Impact Analysis</span>
-                    <span class="skill-badge">CMS Quality Metrics</span>
-                    <span class="skill-badge">Readmission Analytics</span>                    
-                </div>
-                <p>Analyzed 2,497 hospitals using CMS data to identify $207.42 million in potential Medicare savings through readmission optimization. Built interactive 3-page dashboard with geographic analysis, hospital-level comparisons, and financial impact recommendations.</p>
-                <a href="https://himansh-11.github.io/healthcare-analytics-portfolio" class="btn">View Project →</a>
-
-            </div>
-
+        </div>
     </div>
-    
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Quick Stats -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <span class="stat-number">$207M</span>
+                <span class="stat-label">Savings Identified</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">2,496</span>
+                <span class="stat-label">Hospitals Analyzed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Major Projects</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p class="section-subtitle">Transforming healthcare data into actionable insights</p>
+            <div class="about-content">
+                Data Specialist at Fathers and Families Support Center with 5+ years of analytics experience. Strong background in healthcare data analysis, SQL database design, and business intelligence visualization. Currently pursuing opportunities in Healthcare Data Analytics, Quality Improvement, and Institutional Research roles at cap-exempt organizations (hospitals, universities, research institutions).
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">End-to-end analytics solutions from database design to interactive dashboards</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Power BI Dashboard -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🏥 Hospital Readmission Analytics</h3>
+                        <div class="project-tags">
+                            <span class="tag">Power BI</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">CMS Data</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Comprehensive analysis of 2,496 U.S. hospitals using CMS data to identify cost-saving opportunities and performance improvement strategies.</p>
+                        
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-number-sm">$207M</div>
+                                <div class="stat-label-sm">Savings Identified</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">2,496</div>
+                                <div class="stat-label-sm">Hospitals Analyzed</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">3</div>
+                                <div class="stat-label-sm">Dashboard Pages</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">15+</div>
+                                <div class="stat-label-sm">DAX Measures</div>
+                            </div>
+                        </div>
+
+                        <div class="project-highlights">
+                            <strong>Key Features</strong>
+                            <ul>
+                                <li>Geographic heat map showing state-level performance</li>
+                                <li>Interactive scatter plots correlating satisfaction & readmissions</li>
+                                <li>Financial ROI analysis with waterfall charts</li>
+                                <li>Dynamic filtering and drill-through navigation</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://himansh-11.github.io/healthcare-analytics-portfolio/" class="project-link" target="_blank">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: SQL Database (NEW!) -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🗄️ Hospital Database System <span class="new-badge">New</span></h3>
+                        <div class="project-tags">
+                            <span class="tag">SQL</span>
+                            <span class="tag">Database Design</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">Healthcare</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Normalized relational database with advanced SQL queries demonstrating database design, complex analytics, and healthcare data management.</p>
+                        
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-number-sm">10</div>
+                                <div class="stat-label-sm">Normalized Tables</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">237</div>
+                                <div class="stat-label-sm">Data Records</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">4</div>
+                                <div class="stat-label-sm">Complex Queries</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">3NF</div>
+                                <div class="stat-label-sm">Normalization</div>
+                            </div>
+                        </div>
+
+                        <div class="project-highlights">
+                            <strong>Key Features</strong>
+                            <ul>
+                                <li>Multi-table JOINs (up to 6 tables)</li>
+                                <li>Window functions (RANK, LAG, LEAD)</li>
+                                <li>CTEs for complex query organization</li>
+                                <li>Patient, appointment, and billing analytics</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="https://himansh-11.github.io/hospital-database-sql/" class="project-link" target="_blank">View Project</a>
+                            <a href="https://github.com/himansh-11/hospital-database-sql" class="project-link secondary" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: CNN Project (Coming Soon) -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>🧠 CNN Emotion Recognition</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Research</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p>Lightweight CNN model demonstrating computational-behavioral parallels in emotion recognition with implications for cognitive science research.</p>
+                        
+                        <div class="project-stats">
+                            <div class="stat">
+                                <div class="stat-number-sm">85.5%</div>
+                                <div class="stat-label-sm">Accuracy</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">25K</div>
+                                <div class="stat-label-sm">Parameters</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">7</div>
+                                <div class="stat-label-sm">Emotions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number-sm">36K</div>
+                                <div class="stat-label-sm">Images</div>
+                            </div>
+                        </div>
+
+                        <div class="project-highlights">
+                            <strong>Key Features</strong>
+                            <ul>
+                                <li>Model confusion patterns mirror human perception</li>
+                                <li>Attention mechanisms focus on anatomically correct regions</li>
+                                <li>Lightweight architecture for efficiency</li>
+                                <li>Computational modeling of cognition</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link disabled">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <p class="section-subtitle">Comprehensive toolkit for data analysis, visualization, and database management</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Analysis & Visualization</h3>
+                    <ul>
+                        <li>Power BI (Advanced DAX)</li>
+                        <li>Tableau</li>
+                        <li>Python (Pandas, NumPy)</li>
+                        <li>Excel (Advanced)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Database & SQL</h3>
+                    <ul>
+                        <li>SQL (PostgreSQL, MySQL, SQLite)</li>
+                        <li>Database Design (3NF normalization)</li>
+                        <li>Complex Queries (JOINs, CTEs, Window Functions)</li>
+                        <li>Data Modeling</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Machine Learning & Research</h3>
+                    <ul>
+                        <li>PyTorch & TensorFlow</li>
+                        <li>CNN Architecture Design</li>
+                        <li>Statistical Analysis</li>
+                        <li>Research Methods</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Healthcare Domain</h3>
+                    <ul>
+                        <li>CMS Data Analysis</li>
+                        <li>Healthcare Metrics (Readmissions, Quality)</li>
+                        <li>HIPAA Principles</li>
+                        <li>Clinical Data Management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Open to healthcare data analytics and research opportunities</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <span class="contact-icon">💼</span>
+                    <h3>Professional</h3>
+                    <p><a href="https://linkedin.com/in/himansh11" target="_blank">LinkedIn Profile</a></p>
+                    <p><a href="https://github.com/himansh-11" target="_blank">GitHub Portfolio</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <span class="contact-icon">📧</span>
+                    <h3>Email</h3>
+                    <p><a href="mailto:himanshr1107@gmail.com">himanshr1107@gmail.com</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <span class="contact-icon">📍</span>
+                    <h3>Location</h3>
+                    <p>Chesterfield, Missouri</p>
+                    <p class="muted">Open to relocation for cap-exempt roles</p>
+                </div>
+
+                <div class="contact-card">
+                    <span class="contact-icon">🎯</span>
+                    <h3>Seeking</h3>
+                    <p>Healthcare Data Analyst</p>
+                    <p>Quality Improvement Analyst</p>
+                    <p>Institutional Research</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Background Section -->
+        <section>
+            <h2>Background</h2>
+            <p class="section-subtitle">Education and professional experience</p>
+            
+            <div class="background-card">
+                <h3>Education</h3>
+                <p><strong>B.S. Data Science</strong> | Maryville University</p>
+                
+                <h3 style="margin-top: 2.5rem;">Experience</h3>
+                <p><strong>Data Specialist</strong> | Fathers and Families Support Center</p>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">5+ years in data analytics, reporting, and database management</p>
+                
+                <h3 style="margin-top: 2.5rem;">Current Focus</h3>
+                <p>Applying to PhD programs in Cognitive, Computational and Systems Neuroscience while actively seeking healthcare data analytics positions at cap-exempt organizations (hospitals, universities, research institutions)</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Himansh Rajak | Data Analytics Portfolio</p>
-        <p>
-            <a href="mailto:himanshr1107@gmail.com">Email</a> | 
-            <a href="https://linkedin.com/in/himansh-rajak">LinkedIn</a> | 
-            <a href="https://github.com/Himansh-11">GitHub</a>
+        <p style="font-size: 1.1rem; margin-bottom: 1rem;">&copy; 2025 Himansh | Healthcare Data Analytics Portfolio</p>
+        <p style="font-size: 0.95rem; opacity: 0.8;">
+            <a href="https://github.com/himansh-11" target="_blank">GitHub</a> |
+            <a href="https://linkedin.com/in/himansh11" target="_blank">LinkedIn</a> |
+            <a href="mailto:himanshr1107@gmail.com">Email</a>
         </p>
     </footer>
+
+    <!-- Scroll Progress Script -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollIndicator.style.width = scrolled + '%';
+        });
+    </script>
 </body>
 </html>
