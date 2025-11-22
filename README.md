@@ -13,7 +13,6 @@ Healthcare Data Analyst with expertise in Power BI, SQL, and healthcare analytic
 **Background:**
 - 🎓 B.S. in Data Science - Maryville University
 - 💼 Data Specialist at Fathers and Families Support Center
-- 📊 5+ years of analytics experience
 - 🏥 Specialization in healthcare data and CMS metrics
 
 ---
