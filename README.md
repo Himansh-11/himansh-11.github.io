@@ -34,7 +34,7 @@ Comprehensive analysis of hospital readmission patterns across 2,497 U.S. hospit
 ---
 
 ### 2. Hospital Database Design
-**MySQL | SQL | Database Design**
+**SQLite | SQL | Database Design**
 
 Normalized relational database schema for hospital management systems.
 
